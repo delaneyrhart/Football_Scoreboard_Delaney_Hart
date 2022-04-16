@@ -43,6 +43,17 @@ class Scoreboard
   private:
     Team home;
     Team visitor;
+  public:
+    void setHome(Team hSet) { home = hSet; }
+    void setVisitor(Team vSet) { visitor = vSet; }
+    Team getHome() const { return home; }
+    Team getVisitor() const { return visitor; }
+    void showScoreboard()
+    {
+      cout << "***********SCOREBOARD**********" << endl;
+      cout << "HOME" << "         " << "VISITOR" << endl;
+      cout << "QTR" << endl;
+    }
   
 };
 
@@ -51,5 +62,5 @@ int main() {
   Team team1;
   Team team2;
   Scoreboard sb;
-  
-}
+
+};
