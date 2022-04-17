@@ -63,10 +63,12 @@ class Scoreboard
     {
       string color = ""; 
       string reset = "\x1b[0m";
-      color = "\x1b[32;4m"; //green 
-      string score = "\x1b[36;1m";
-      cout << " " << home.getName() << "\t\t\t\t" << visitor.getName() << endl; //to keep track of teams
-      cout << score << home.getCoachName() << reset << "\t\t" << visitor.getCoachName() << endl; //keep track of coaches
+      color = "\x1b[45;1m"; //pink for numbers
+      string score = "\x1b[36;4m"; //blue for teams
+      string title = "\x1b[46;1m"; //title
+      cout << title << "\t\tFOOTBALL SCOREBOARD PROGRAM\n\n" << reset << endl;
+      cout << " " << score << home.getName() << reset << "\t\t\t\t" << score << visitor.getName() << reset << endl; //to keep track of teams
+      cout << " " << home.getCoachName() << "\t\t\t\t\t" << visitor.getCoachName() << endl; //keep track of coaches
       cout << " _______________________________________________" << endl;
       cout << "|     HOME" << "                          " 
             << "VISITOR     |" << endl;
@@ -115,11 +117,17 @@ int main() {
       system("clear"); //clear the screen of previous content 
       sb.showScoreboard(); //show the current scoreboard data
       //menu options 
-      cout << "A - Update Home Status" << endl;
-      cout << "C - Update Home Team City" << endl;
-      cout << "D - Update Home Team Score" << endl;
+      cout << "A = Change Home Team" << endl;
+      cout << "A = Update Home Team Name" << endl; 
+      cout << "B = Update Home Team Coach" << endl; 
+      cout << "C = Update Home Team Score" << endl;
+      cout << "D = Update Home Team City" << endl;
+      cout << "E = Update Visiting Team Name" << endl; 
+      cout << "F = Update Visiting Team Coach" << endl; 
+      cout << "G = Update Visiting Team Score" << endl;
+      cout << "H = Update Visiting Team City" << endl;
+      cout << "Q = Update Quarter" << endl; 
       cout << "X - Exit" << endl;
-      cout << ">"; 
       cin >> userChoice; 
 
       if(userChoice == "A" || userChoice == "a")
