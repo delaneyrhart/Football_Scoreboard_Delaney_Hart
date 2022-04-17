@@ -20,6 +20,8 @@ class Team
   public:
     Team() //default constructor
     {
+        name = "Default Team Name";
+        coach_Name = "Default Coach";
         score = 0; 
         home_Status = false; //visitor = false, home = true
         timeout_Count = 0; //I don't actually know what this is
@@ -41,9 +43,20 @@ class Scoreboard
   private:
     Team home;
     Team visitor;
+    int qtr; //The quarter (1-4)
+    int down; //Also 1-4
+    int toGo; //Yards to go
   public:
+    Scoreboard() //Default constructor?
+    { qtr = 0; 
+      down = 0;
+      toGo = 0; }
     void setHome(Team hSet) { home = hSet; }
     void setVisitor(Team vSet) { visitor = vSet; }
+    void setQtr(int q) { qtr = q; }
+    void setDown(int d) { down = d; }
+    void setToGo(int tG) { toGo = tG; }
+    int getQtr() const { return qtr; }
     Team getHome() const { return home; }
     Team getVisitor() const { return visitor; }
     void showScoreboard()
@@ -51,17 +64,19 @@ class Scoreboard
       string color = ""; 
       string reset = "\x1b[0m";
       color = "\x1b[32;4m"; //green 
-      string score = "\x1b[36;1m"; //score color
-      cout << "***********SCOREBOARD**********" << endl;
-      cout << " _______________________________________" << endl;
-      cout << "| HOME" << "                          " 
-            << "VISITOR |" << endl;
-      cout << "|" << home.getName() << "\t\t\t\t" << visitor.getName() << endl; 
-      cout << "| QTR" << endl;
-      cout << "\t" << score << home.getScore() << reset << "\t\t\t\t\t\t" << visitor.getScore() << endl; 
-      cout << score << home.getCoachName() << reset << "\t\t" << visitor.getCoachName() << endl; 
-      for(int i = 0; i < 47; i++) { cout << "*"; } cout << endl;
-       
+      string score = "\x1b[36;1m";
+      cout << " " << home.getName() << "\t\t\t\t" << visitor.getName() << endl; //to keep track of teams
+      cout << score << home.getCoachName() << reset << "\t\t" << visitor.getCoachName() << endl; //keep track of coaches
+      cout << " _______________________________________________" << endl;
+      cout << "|     HOME" << "                          " 
+            << "VISITOR     |" << endl;
+      cout << "|\t\t" << color << home.getScore() << "\t\t\t\t\t\t\t\t" << visitor.getScore() << reset << "\t\t|" << endl; 
+      cout << "|                    QTR " << color << qtr 
+        << reset << "                      |" << endl;
+      cout << "|\t\t\t" << color << down << reset << " DOWN" << "\t\t\t\t" << "TO GO " << color << toGo << reset << "\t\t\t|" << endl;
+      cout << "|_______________________________________________|" << endl;
+
+      cout << "\n******MENU******" << endl;
        //proces to choose the home team
        cout << "Home> \t"; 
        if(home.getHomeStatus() == true)
@@ -92,7 +107,8 @@ int main() {
   int homeTeamQuestion = 0; 
   int newScore = 0; 
 
-
+  sb.setHome(team1);
+  sb.setVisitor(team2);
 
     do 
   {
