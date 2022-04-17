@@ -45,7 +45,8 @@ int main() {
       cout << "T = Timeout Count" << endl;
       cout << "Q = Update Quarter" << endl; 
       cout << "X - Exit" << endl;
-      cin >> userChoice; 
+      
+      validateString(userChoice); 
 
       if(userChoice == "A" || userChoice == "a") //home statue
       {
@@ -71,62 +72,62 @@ int main() {
       else if(userChoice == "B" || userChoice == "b")//home name
       { 
         cout << "\nPlease enter a new name for the home team: ";
-        cin >> newName; 
+        validateString(newName); 
         //change team1 default name
         team1.setName1(newName);
       }
       else if(userChoice == "C" || userChoice == "c")//home coach
       {
           cout << "\nPlease enter the new home coach name: "; 
-          cin >> newHomeCoachName; 
+          validateString(newHomeCoachName); 
           team1.setCoachName(newHomeCoachName); 
       }
       else if(userChoice == "D" || userChoice == "d")//home city
       {
         cout << "\nPlease enter the new home team city: ";
-        cin >> newHomeCity;
+        validateString(newHomeCity);
         team1.setHome_City(newHomeCity);
       }
       else if(userChoice == "E" || userChoice == "e") //home score
       {
         cout << "\nPlease enter a new score for the home team: "; 
-        cin >> newScore; 
+        validateInt(newScore); 
         team1.setScore(newScore);
       }
       else if(userChoice == "F" || userChoice == "f")//team name
       { 
         cout << "\nPlease enter a new name for the visiting team: ";
-        cin >> newName2; 
+        validateString(newName2); 
         //change team2 default name
         team2.setName2(newName2);
       }
       else if(userChoice == "G" || userChoice == "g")//coach
       {
           cout << "\nPlease enter the new visiting coach name: "; 
-          cin >> newVisitingCoachName; 
+          validateString(newVisitingCoachName); 
           team2.setCoachName2(newVisitingCoachName); 
       }
       else if(userChoice == "H" || userChoice == "h")//city
       {
         cout << "\nPlease enter the new visiting team city: ";
-        cin >> newVisitorCity;
+        validateString(newVisitorCity);
         team2.setVisitor_City(newVisitorCity);
       }
       else if(userChoice == "I" || userChoice == "i") //score
       {
         cout << "\nPlease enter a new score for the visiting team: "; 
-        cin >> newScore; 
+        validateInt(newScore); 
         team2.setScore(newScore);
       }
       else if(userChoice == "Q" || userChoice == "q")
       {
         cout << "What is the quarter? ";
-        cin >> newQtr;
+        validateInt(newQtr);
       }
       else if(userChoice == "T" || userChoice == "t")
       {
         cout << "Update time out count: ";
-        cin >> newTimeOut;
+        validateInt(newTimeOut);
       }
       else if(userChoice == "X" || userChoice == "x")
       {

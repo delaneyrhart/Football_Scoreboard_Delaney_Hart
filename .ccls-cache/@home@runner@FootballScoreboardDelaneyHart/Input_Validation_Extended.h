@@ -111,7 +111,6 @@ string validateString(string &stringInput)
 {
     while (true) //use cin, getline() for this 
     {
-        cout << "Enter a word (no spaces): ";
 
         try
         {

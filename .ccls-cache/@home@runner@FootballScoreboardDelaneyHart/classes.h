@@ -84,12 +84,10 @@ class Scoreboard
       cout << "|     HOME" << "                          " 
             << "VISITOR     |" << endl;
       cout << "|\t\t" << color << home.getScore() << "\t\t\t\t\t\t\t\t" << visitor.getScore() << reset << "\t\t|" << endl; 
-      cout << "|                    QTR " << color << qtr 
-        << reset << "                      |" << endl;
+      cout << "|\t\t" << "TO LEFT:" << "QTR" << color << qtr 
+        << reset << "TO LEFT:"<< "\t\t|" << endl;
       cout << "|\t\t\t" << color << down << reset << " DOWN" << "\t\t\t\t" << "TO GO " << color << toGo << reset << "\t\t\t|" << endl;
       cout << "|_______________________________________________|" << endl;
-
-      cout << "TO Left: ";
       cout << "\n******MENU******" << endl;
        //proces to choose the home team
        cout << "Home> \t"; 
