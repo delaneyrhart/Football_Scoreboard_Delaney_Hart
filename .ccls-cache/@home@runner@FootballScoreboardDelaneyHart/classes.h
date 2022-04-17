@@ -34,7 +34,7 @@ class Team
     void setVisitor_City(string vc) {visitor_City = vc; }
     void setName1(string n1) { name1 = n1; }
     void setName2(string n2) {name2 = n2; }
-    void setShotsOnGoal(int tc) {  timeout_Count = tc; }
+    void setTimeout(int tc) {  timeout_Count = tc; }
     void setCoachName(string hcn) { home_coachName = hcn; }
     void setCoachName2(string vcn) {visitor_coachName = vcn; }
     int getScore() const { return score; }
@@ -43,7 +43,7 @@ class Team
     string getVisitor_City() const {return visitor_City; }
     string getName1() const { return name1; }
     string getName2() const { return name2; }
-    int getShotsOnGoal() const { return timeout_Count; }
+    int getTimeout() const { return timeout_Count; }
     string getCoachName() const { return home_coachName; }
     string getCoachName2() const {return visitor_coachName; }
 };
@@ -69,6 +69,8 @@ class Scoreboard
     int getQtr() const { return qtr; }
     Team getHome() const { return home; }
     Team getVisitor() const { return visitor; }
+    int getDown() const { return down; }
+    int gettoGo () const { return toGo; }
     void showScoreboard()
     {
       string color = ""; 
@@ -84,9 +86,10 @@ class Scoreboard
       cout << "|     HOME" << "                          " 
             << "VISITOR     |" << endl;
       cout << "|\t\t" << color << home.getScore() << "\t\t\t\t\t\t\t\t" << visitor.getScore() << reset << "\t\t|" << endl; 
-      cout << "|\t\t" << "TO LEFT:" << "QTR" << color << qtr 
-        << reset << "TO LEFT:"<< "\t\t|" << endl;
-      cout << "|\t\t\t" << color << down << reset << " DOWN" << "\t\t\t\t" << "TO GO " << color << toGo << reset << "\t\t\t|" << endl;
+      cout << "|\t\t\t\t\t\t\t\t\t\t\t\t|" << endl;
+      cout << "|" << " TO LEFT\t\t\t" << " QTR " << color << qtr 
+        << reset << "\t\t\t\tTO LEFT "<< "|" << endl;
+      cout << "|\t" << color << home.getTimeout() << "\t\t" << down << reset << " DOWN" << "\t\t\t" << " TO GO " << color << toGo << "\t\t" << visitor.getTimeout() << reset << "\t|" << endl;
       cout << "|_______________________________________________|" << endl;
       cout << "\n******MENU******" << endl;
        //proces to choose the home team
@@ -101,7 +104,7 @@ class Scoreboard
        }
        else
        {
-         cout << "Error: "; 
+         cout << "Default"; 
        }
        cout  << endl; 
     }

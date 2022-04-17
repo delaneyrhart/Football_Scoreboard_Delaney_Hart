@@ -24,6 +24,8 @@ int main() {
   int newScore = 0; 
   int newQtr = 0;
   int newTimeOut = 0;
+  int newDown = 0;
+  int newToGo = 0;
 
   sb.setHome(team1);
   sb.setVisitor(team2);
@@ -42,9 +44,12 @@ int main() {
       cout << "G = Update Visiting Team Coach" << endl; 
       cout << "H = Update Visiting Team City" << endl;
       cout << "I = Update Visiting Team Score" << endl;
-      cout << "T = Timeout Count" << endl;
+      cout << "J = Home Timeout Count" << endl;
+      cout << "K = Visitor Timeout Count" << endl;
+      cout << "L = Down" << endl;
+      cout << "M = Yards to go" << endl;
       cout << "Q = Update Quarter" << endl; 
-      cout << "X - Exit" << endl;
+      cout << "X = Exit" << endl;
       
       validateString(userChoice); 
 
@@ -119,6 +124,30 @@ int main() {
         validateInt(newScore); 
         team2.setScore(newScore);
       }
+      else if(userChoice == "J" || userChoice == "j") //score
+      {
+        cout << "\nUpdate Home Timeout Count: "; 
+        validateInt(newTimeOut); 
+        team1.setTimeout(newTimeOut);
+      }
+      else if(userChoice == "K" || userChoice == "k") //score
+      {
+        cout << "\nUpdate Visitor Timeout Count: "; 
+        validateInt(newTimeOut); 
+        team2.setTimeout(newTimeOut);
+      }
+      else if(userChoice == "L" || userChoice == "l") //score
+      {
+        cout << "\nUpdate down: "; 
+        validateInt(newDown); 
+        sb.setDown(newDown);
+      }
+      else if(userChoice == "M" || userChoice == "m") //score
+      {
+        cout << "\nUpdate yards to go: "; 
+        validateInt(newToGo); 
+        sb.setToGo(newToGo);
+      }  
       else if(userChoice == "Q" || userChoice == "q")
       {
         cout << "What is the quarter? ";
