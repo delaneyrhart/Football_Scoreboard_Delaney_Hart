@@ -26,7 +26,7 @@ class Team
         name1 = "Longhorns";
         name2 = "Red Raiders";
         home_coachName = "Joey McGuire";
-        visitor_coachName = "";
+        visitor_coachName = "Steve Sarkisian";
         home_City = "Austin";
         visitor_City = "Lubbock";
         score = 0; 
@@ -35,16 +35,19 @@ class Team
      }
     void setScore(int s) { score = s; }
     void setHomeStatus(bool hs) { home_Status = hs; }
+    void setHome_City(string hc) {home_City = hc; }
     void setName1(string n1) { name1 = n1; }
     void setName2(string n2) {name2 = n2; }
     void setShotsOnGoal(int tc) {  timeout_Count = tc; }
-    void setCoachName(string cn) { coach_Name = cn; }
+    void setCoachName(string hcn) { home_coachName = hcn; }
+    void setCoachName2(string vcn) {visitor_coachName = vcn; }
     int getScore() const { return score; }
     bool getHomeStatus() const { return home_Status; }
+    string getHome_City() const {return home_City; }
     string getName1() const { return name1; }
     string getName2() const { return name2; }
     int getShotsOnGoal() const { return timeout_Count; }
-    string getCoachName() const { return coach_Name; }
+    string getCoachName() const { return home_coachName; }
 };
 
 class Scoreboard
@@ -76,7 +79,7 @@ class Scoreboard
       string score = "\x1b[36;4m"; //blue for teams
       string title = "\x1b[46;1m"; //title
       cout << title << "\t\tFOOTBALL SCOREBOARD PROGRAM\n\n" << reset << endl;
-      cout << " " << score << home.getName1() << reset << "\t\t\t\t" << score << visitor.getName2() << reset << endl; //to keep track of teams
+      cout << " " << score << home.getName1() << reset << "\t\t\t\t\t\t" << score << visitor.getName2() << reset << endl; //to keep track of teams
       cout << " " << home.getCoachName() << "\t\t\t\t\t" << visitor.getCoachName() << endl; //keep track of coaches
       cout << " _______________________________________________" << endl;
       cout << "|     HOME" << "                          " 
@@ -114,7 +117,8 @@ int main() {
   Scoreboard sb; 
   string userChoice = ""; 
   string newName = "";
-  string newCoachName = ""; 
+  string newHomeCoachName = ""; 
+  string newHomeCity = "";
   int homeTeamQuestion = 0; 
   int newScore = 0; 
 
@@ -126,19 +130,20 @@ int main() {
       system("clear"); //clear the screen of previous content 
       sb.showScoreboard(); //show the current scoreboard data
       //menu options 
-      cout << "A = Update Home Team Name" << endl; 
-      cout << "B = Update Home Team Coach" << endl; 
-      cout << "C = Update Home Team Score" << endl;
+      cout << "A = Update Home Team Status" << endl; 
+      cout << "B = Update Home Team Name" << endl;
+      cout << "C = Update Home Team Coach" << endl; 
       cout << "D = Update Home Team City" << endl;
-      cout << "E = Update Visiting Team Name" << endl; 
-      cout << "F = Update Visiting Team Coach" << endl; 
-      cout << "G = Update Visiting Team Score" << endl;
-      cout << "H = Update Visiting Team City" << endl;
+      cout << "E = Update Home Team Score" << endl;
+      cout << "F = Update Visiting Team Name" << endl; 
+      cout << "G = Update Visiting Team Coach" << endl; 
+      cout << "H = Update Visiting Team Score" << endl;
+      cout << "I = Update Visiting Team City" << endl;
       cout << "Q = Update Quarter" << endl; 
       cout << "X - Exit" << endl;
       cin >> userChoice; 
 
-      if(userChoice == "A" || userChoice == "a")
+      if(userChoice == "A" || userChoice == "a") //home statue
       {
         cout << "\nChoose the Home Team" << endl; 
         cout << "\nWho is the home team? 1 = Team 1, 2 = Team 2: "; 
@@ -159,34 +164,35 @@ int main() {
           cout << "\nInvalid Input!" << endl; 
         }
       }
-      else if(userChoice == "C" || userChoice == "c")
-      {
-        cout << "\nUpdate Home Status Module****" << endl; 
-        cout << "\nWho is the home team: 1 = T1, 2=T2: "; 
-        homeTeamQuestion = validateInt(homeTeamQuestion); 
-       // cin >> homeTeamQuestion; 
-        if(homeTeamQuestion == 1)
-        {
-          team1.setHomeStatus(true); 
-          team2.setHomeStatus(false); 
-        }
-        else if(homeTeamQuestion == 2)
-        {
-          team1.setHomeStatus(false); 
-          team2.setHomeStatus(true);
-        }
-        else
-        {
-          cout << "\nInvalid Input!" << endl; 
-        }
+      else if(userChoice == "B" || userChoice == "b")//home name
+      { 
+        cout << "\nPlease enter a new name for the home team: ";
+        cin >> newName; 
+        //change team1 default name
+        team1.setName1(newName);
       }
-      else if(userChoice == "D" || userChoice == "d")
+      else if(userChoice == "C" || userChoice == "c")//home coach
       {
-          cout << "\nUpdate Visitor Coach Module****" << endl; 
-          cout << "\nPlease enter the visitor coach Name: "; 
-          cin >> newCoachName; 
-          team2.setCoachName(newCoachName); 
+          cout << "\nPlease enter the new home coach name: "; 
+          cin >> newHomeCoachName; 
+          team1.setCoachName(newHomeCoachName); 
       }
+      else if(userChoice == "D" || userChoice == "d")//home city
+      {
+        cout << "\nPlease enter the new home team city: ";
+        cin >> newHomeCity;
+        team1.setHome_City(newHomeCity);
+      }
+      else if(userChoice == "E" || userChoice == "e") //home score
+      {
+        cout << "\nPlease enter a new score for the home team: "; 
+        cin >> newScore; 
+        team1.setScore(newScore);
+      }
+
+
+        
+   
       else if(userChoice == "X" || userChoice == "x")
       {
         cout << "Exiting...Bye!" << endl; 
