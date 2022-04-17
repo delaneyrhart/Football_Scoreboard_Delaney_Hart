@@ -9,6 +9,12 @@ A program meant to replicate a football scoreboard
 using namespace std;
 
 int main() {
+
+  string home = ""; 
+  string reset = "\x1b[0m";
+  home = "\x1b[32;1m";
+  string visitor = "\x1b[34;1m";
+  string other = "\x1b[31;1m";
   //1 scoreboard and 2 teams
   Team team1;
   Team team2;
@@ -26,6 +32,8 @@ int main() {
   int newTimeOut = 0;
   int newDown = 0;
   int newToGo = 0;
+  int newClockM = 0;
+  int newClockS = 0;
 
   sb.setHome(team1);
   sb.setVisitor(team2);
@@ -35,21 +43,28 @@ int main() {
       system("clear"); //clear the screen of previous content 
       sb.showScoreboard(); //show the current scoreboard data
       //menu options 
+      cout << home;
       cout << "A = Update Home Team Status" << endl; 
       cout << "B = Update Home Team Name" << endl;
       cout << "C = Update Home Team Coach" << endl; 
       cout << "D = Update Home Team City" << endl;
       cout << "E = Update Home Team Score" << endl;
+      cout << visitor;
       cout << "F = Update Visiting Team Name" << endl; 
       cout << "G = Update Visiting Team Coach" << endl; 
       cout << "H = Update Visiting Team City" << endl;
       cout << "I = Update Visiting Team Score" << endl;
-      cout << "J = Home Timeout Count" << endl;
-      cout << "K = Visitor Timeout Count" << endl;
-      cout << "L = Down" << endl;
-      cout << "M = Yards to go" << endl;
+      cout << other;
+      cout << "J = Update Home Timeout Count" << endl;
+      cout << "K = Update Visitor Timeout Count" << endl;
+      cout << "L = Update Down" << endl;
+      cout << "Y = Update Yards to go" << endl;
+      cout << "M = Update Clock Minutes" << endl;
+      cout << "S = Update Clock Seconds" << endl;
       cout << "Q = Update Quarter" << endl; 
+      cout << reset;
       cout << "X = Exit" << endl;
+    
       
       validateString(userChoice); 
 
@@ -142,11 +157,23 @@ int main() {
         validateInt(newDown); 
         sb.setDown(newDown);
       }
-      else if(userChoice == "M" || userChoice == "m") //score
+      else if(userChoice == "Y" || userChoice == "y") //score
       {
         cout << "\nUpdate yards to go: "; 
         validateInt(newToGo); 
         sb.setToGo(newToGo);
+      }  
+      else if(userChoice == "M" || userChoice == "m") //score
+      {
+        cout << "\nUpdate clock minutes: "; 
+        validateInt(newClockM); 
+        sb.setClockM(newClockM);
+      }    
+      else if(userChoice == "S" || userChoice == "S") //score
+      {
+        cout << "\nUpdate clock seconds: "; 
+        validateInt(newClockS); 
+        sb.setClockS(newClockS);
       }  
       else if(userChoice == "Q" || userChoice == "q")
       {
