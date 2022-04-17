@@ -36,6 +36,7 @@ class Team
     void setScore(int s) { score = s; }
     void setHomeStatus(bool hs) { home_Status = hs; }
     void setHome_City(string hc) {home_City = hc; }
+    void setVisitor_City(string vc) {visitor_City = vc; }
     void setName1(string n1) { name1 = n1; }
     void setName2(string n2) {name2 = n2; }
     void setShotsOnGoal(int tc) {  timeout_Count = tc; }
@@ -44,10 +45,12 @@ class Team
     int getScore() const { return score; }
     bool getHomeStatus() const { return home_Status; }
     string getHome_City() const {return home_City; }
+    string getVisitor_City() const {return visitor_City; }
     string getName1() const { return name1; }
     string getName2() const { return name2; }
     int getShotsOnGoal() const { return timeout_Count; }
     string getCoachName() const { return home_coachName; }
+    string getCoachName2() const {return visitor_coachName; }
 };
 
 class Scoreboard
@@ -80,7 +83,7 @@ class Scoreboard
       string title = "\x1b[46;1m"; //title
       cout << title << "\t\tFOOTBALL SCOREBOARD PROGRAM\n\n" << reset << endl;
       cout << " " << score << home.getName1() << reset << "\t\t\t\t\t\t" << score << visitor.getName2() << reset << endl; //to keep track of teams
-      cout << " " << home.getCoachName() << "\t\t\t\t\t" << visitor.getCoachName() << endl; //keep track of coaches
+      cout << " " << home.getCoachName() << "\t\t\t\t\t" << visitor.getCoachName2() << endl; //keep track of coaches
       cout << " _______________________________________________" << endl;
       cout << "|     HOME" << "                          " 
             << "VISITOR     |" << endl;
@@ -90,6 +93,7 @@ class Scoreboard
       cout << "|\t\t\t" << color << down << reset << " DOWN" << "\t\t\t\t" << "TO GO " << color << toGo << reset << "\t\t\t|" << endl;
       cout << "|_______________________________________________|" << endl;
 
+      cout << "TO Left: ";
       cout << "\n******MENU******" << endl;
        //proces to choose the home team
        cout << "Home> \t"; 
@@ -117,10 +121,15 @@ int main() {
   Scoreboard sb; 
   string userChoice = ""; 
   string newName = "";
+  string newName2 = "";
   string newHomeCoachName = ""; 
+  string newVisitingCoachName = "";
   string newHomeCity = "";
+  string newVisitorCity = "";
   int homeTeamQuestion = 0; 
   int newScore = 0; 
+  int newQtr = 0;
+  int newTimeOut = 0;
 
   sb.setHome(team1);
   sb.setVisitor(team2);
@@ -137,8 +146,9 @@ int main() {
       cout << "E = Update Home Team Score" << endl;
       cout << "F = Update Visiting Team Name" << endl; 
       cout << "G = Update Visiting Team Coach" << endl; 
-      cout << "H = Update Visiting Team Score" << endl;
-      cout << "I = Update Visiting Team City" << endl;
+      cout << "H = Update Visiting Team City" << endl;
+      cout << "I = Update Visiting Team Score" << endl;
+      cout << "T = Timeout Count" << endl;
       cout << "Q = Update Quarter" << endl; 
       cout << "X - Exit" << endl;
       cin >> userChoice; 
@@ -189,10 +199,41 @@ int main() {
         cin >> newScore; 
         team1.setScore(newScore);
       }
-
-
-        
-   
+      else if(userChoice == "D" || userChoice == "d")//team name
+      { 
+        cout << "\nPlease enter a new name for the visiting team: ";
+        cin >> newName2; 
+        //change team2 default name
+        team2.setName2(newName2);
+      }
+      else if(userChoice == "E" || userChoice == "e")//coach
+      {
+          cout << "\nPlease enter the new visiting coach name: "; 
+          cin >> newVisitingCoachName; 
+          team2.setCoachName2(newVisitingCoachName); 
+      }
+      else if(userChoice == "F" || userChoice == "f")//city
+      {
+        cout << "\nPlease enter the new visiting team city: ";
+        cin >> newVisitorCity;
+        team2.setVisitor_City(newVisitorCity);
+      }
+      else if(userChoice == "G" || userChoice == "g") //score
+      {
+        cout << "\nPlease enter a new score for the visiting team: "; 
+        cin >> newScore; 
+        team2.setScore(newScore);
+      }
+      else if(userChoice == "Q" || userChoice == "q")
+      {
+        cout << "What is the quarter? ";
+        cin >> newQtr;
+      }
+      else if(userChoice == "T" || userChoice == "t")
+      {
+        cout << "Update time out count: ";
+        cin >> newTimeOut;
+      }
       else if(userChoice == "X" || userChoice == "x")
       {
         cout << "Exiting...Bye!" << endl; 
