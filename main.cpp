@@ -1,7 +1,8 @@
 /* Delaney Hart
-COSC 1437 - Dr. McMillan
+COSC 1437 Tarrant County College - Dr. McMillan
 4/16/2022
 A program meant to replicate a football scoreboard
+This project is an opportunity to practice working with classes.
 */
 #include <iostream>
 #include <string>
@@ -169,7 +170,7 @@ int main() {
         validateInt(newClockM); 
         sb.setClockM(newClockM);
       }    
-      else if(userChoice == "S" || userChoice == "S") //score
+      else if(userChoice == "S" || userChoice == "s") //score
       {
         cout << "\nUpdate clock seconds: "; 
         validateInt(newClockS); 

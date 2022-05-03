@@ -93,6 +93,7 @@ class Scoreboard
       cout << " _______________________________________________" << endl;
       cout << "|\tHOME: " << "\t\t\t" << color << clockM << ":" << clockS << reset << "\t\t\t\t" << "VISITOR:\t|" << endl;
       cout << "|\t\t" << color << home.getScore() << "\t\t\t\t\t\t\t\t" << visitor.getScore() << reset << "\t\t|" << endl; 
+      //time outs left
       cout << "|\t\t\t\t\t\t\t\t\t\t\t\t|" << endl;
       cout << "|" << " TO LEFT\t\t\t" << " QTR " << color << qtr 
         << reset << "\t\t\t\tTO LEFT "<< "|" << endl;
